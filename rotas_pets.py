@@ -1,6 +1,5 @@
 from fastapi import APIRouter, HTTPException, Path, Query
 from database import executar_sql
-
 router = APIRouter(tags=["Pets"])
 
 def representar_pet(pet):

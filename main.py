@@ -3,12 +3,8 @@ import logging
 from fastapi import FastAPI, HTTPException, Path, Query, Request
 from fastapi.responses import JSONResponse
 from mysql.connector import Error as MySQLError
-
 from database import executar_sql
-
 app = FastAPI(title="API de Hotel Pet — Desenvolvimento Web II")
-
-
 @app.exception_handler(MySQLError)
 def erro_de_banco(request: Request, exc: MySQLError):
     logging.getLogger("uvicorn.error").error("Erro no MySQL: %s", exc)
@@ -16,8 +12,6 @@ def erro_de_banco(request: Request, exc: MySQLError):
         status_code=500,
         content={"detail": "Não foi possível acessar o banco de dados."},
     )
-
-
 @app.get("/")
 def raiz():
     return {"mensagem": "API do Hotel Pet rodando com sucesso! Acesse /docs para ver a documentação."}

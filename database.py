@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 import mysql.connector
 from dotenv import load_dotenv
-
 load_dotenv(Path(__file__).with_name(".env"))
 
 def executar_sql(sql, parametros=()):
